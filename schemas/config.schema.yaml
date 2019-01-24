@@ -1,0 +1,24 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+description: snakemake configuration file
+properties:
+  seed:
+    type: integer
+    default: 11
+    description: an integer, seed for fastq sample
+  samples:
+    type: string
+    description: path to samples.tsv file
+  remote:
+    type: boolean
+    default: false
+    description: boolean that indicates whether to download remote files via FTP
+  username:
+    type: string
+    default: anonymous
+    description: username for remote file FTP download
+  password:
+    type: string
+    description: password for remote file FTP download
+
+required:
+  - samples

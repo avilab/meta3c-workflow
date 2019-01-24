@@ -1,0 +1,15 @@
+# Global parameters -------------------
+
+# Set seed for fastq downsampling
+seed: 11
+
+# Path or URL to sample sheet (TSV format, required columns: sample, fq1, fq2, frac)
+# sample - unique sample name
+# fq1 and fq2 - paths to paired-end fastq file
+# frac - fraction of reads to sample. Set it to 0 or >=1 for no downsampling. Check and set also seed in config.yml to make results reproducible.
+samples: samples.tsv
+remote: True
+
+# Remote FTP credentials
+username: anonymous
+password: tapa741@gmail.com
