@@ -1,12 +1,11 @@
-# Runs spades metagenome+assembly module only
-rule preliminary_assembly:
+# Runs spades metagenome+assembly module
+rule spades:
     input: 
       rules.fastp.output
     output: 
-      scaffolds = "preliminary_assembly/{sample}/scaffolds.fasta"
+      scaffolds = "spades/{sample}/scaffolds.fasta"
     params:
-      options = "--meta --only-assembler",
-      dir = "preliminary_assembly/{sample}"
+      options = "--meta --only-assembler"
     log: "logs/{sample}_spades.log"
     wrapper:
       "file:wrappers/spades"
