@@ -8,4 +8,4 @@ rule spades:
       options = "--meta --only-assembler"
     log: "logs/{sample}_spades.log"
     wrapper:
-      "file:../wrappers/spades"
+      "https://raw.githubusercontent.com/avilab/snakemake-wrappers/master/spades"
