@@ -26,8 +26,9 @@ if not os.path.exists("logs/slurm"):
 
 rule all:
     input:
-        expand("spades/{sample}/scaffolds.fasta", sample = SAMPLE_IDS)
+        expand(["spades/{sample}/scaffolds.fasta", "align/{sample}/network.txt"], sample = SAMPLE_IDS)
 
 ## Modules
 include: "rules/trim.smk"
 include: "rules/spades.smk"
+include: "rules/metator.smk"
