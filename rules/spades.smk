@@ -8,4 +8,4 @@ rule spades:
       options = "--meta --only-assembler"
     log: "logs/{sample}_spades.log"
     wrapper:
-      "file:wrappers/spades"
+      "file:../wrappers/spades"
