@@ -30,5 +30,5 @@ rule all:
 
 ## Modules
 include: "rules/trim.smk"
-include: "rules/spades.smk"
-include: "rules/metator.smk"
+include: "rules/assemble.smk"
+##include: "rules/metator.smk"
