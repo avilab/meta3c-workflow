@@ -18,7 +18,7 @@ rule sample:
     temp("munge/{sample}_read1.fq.gz"),
     temp("munge/{sample}_read2.fq.gz")
   params:
-    frac = get_frac,
+    frac = lambda wildcards: get_frac(wildcards),
     seed = config["seed"]
   wrapper:
     "https://raw.githubusercontent.com/avilab/snakemake-wrappers/master/seqtk"
