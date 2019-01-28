@@ -28,8 +28,8 @@ rule fastp:
   input:
     rules.sample.output
   output:
-    pe1 = temp("munge/{sample}_read1_trimmed.fq.gz"),
-    pe2 = temp("munge/{sample}_read2_trimmed.fq.gz")
+    temp("munge/{sample}_read1_trimmed.fq.gz"),
+    temp("munge/{sample}_read2_trimmed.fq.gz")
   params:
     options = "--trim_front1 5 --trim_tail1 5 --length_required 50 --low_complexity_filter --complexity_threshold 8",
     html = "munge/{sample}_fastp_report.html",
