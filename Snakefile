@@ -26,7 +26,7 @@ if not os.path.exists("logs/slurm"):
 
 rule all:
     input:
-        expand(["assemble/{sample}/final.contigs.fa"], sample = SAMPLE_IDS)
+        expand(["assemble/{sample}/final.contigs.fa", "assemble/{sample}/coverage.txt"], sample = SAMPLE_IDS)
 
 ## Modules
 include: "rules/trim.smk"
