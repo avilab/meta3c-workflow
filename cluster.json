@@ -20,6 +20,11 @@
         "time": 1000,
         "mem" : 40000
     },
+    "align" :
+    {
+        "time": 1000,
+        "mem" : 8000
+    },
     "coverage" :
     {
         "time" : 360,
