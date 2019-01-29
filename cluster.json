@@ -10,12 +10,14 @@
     },
     "fastp" :
     {
-        "cpus-per-task" : "{threads}"
+        "cpus-per-task" : "{threads}",
+        "time" : 60,
+        "mem" : 8000
     }
     ,
-    "spades" :
+    "assemble" :
     {
-        "time": 600,
-        "mem" : 16000
+        "time": 1000,
+        "mem" : 40000
     }
 }
