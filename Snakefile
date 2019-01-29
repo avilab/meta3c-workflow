@@ -28,7 +28,7 @@ rule all:
     input:
         expand(["assemble/{sample}/final.contigs.fa", 
                 "align/{sample}/aln.sam.gz", 
-                "assemble/{sample}/coverage.txt"], sample = SAMPLE_IDS)
+                "align/{sample}/coverage.txt"], sample = SAMPLE_IDS)
 
 ## Modules
 include: "rules/trim.smk"
