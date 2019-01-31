@@ -56,7 +56,8 @@ rule network:
       chunk_size = 1000,
       read_size = 65,
       size_chunk_threshold = 500
-    threads:
+    conda: 
+      "../envs/network.yaml"
     shell:
       "scripts/network.py \
           --input {input.alignment} \
