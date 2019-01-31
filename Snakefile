@@ -33,8 +33,7 @@ rule all:
         expand(["assemble/{sample}/final.contigs.fa", 
                 "align/{sample}/aln.sam.gz", 
                 "align/{sample}/coverage.tsv",
-                "mapped/{sample}_raw.bam",
-                "mapped/{sample}_sorted.bam"], sample = SAMPLE_IDS)
+                "align/{sample}/sorted.bam"], sample = SAMPLE_IDS)
 
 ## Modules
 include: "rules/trim.smk"
