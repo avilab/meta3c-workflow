@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 """
 General utility functions for handling BAM files and generating 3C networks.
