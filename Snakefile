@@ -20,10 +20,6 @@ SAMPLES = pd.read_table(config["samples"], sep = "\s+").set_index("sample", drop
 validate(SAMPLES, "schemas/samples.schema.yaml")
 SAMPLE_IDS = SAMPLES.index.values.tolist()
 
-## Constrain sample names to only alphanumeric characters
-wildcard_constraints:
-    sample="[[:alnum:]]+"
-
 ## Create slurm logs dir
 if not os.path.exists("logs/slurm"):
     os.makedirs("logs/slurm")
