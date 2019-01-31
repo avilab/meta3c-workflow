@@ -33,7 +33,7 @@
     },
     "samtools_view" :
     {
-        "time" : 120,
+        "time" : 600,
         "mem" : 4000
     },
     "samtools_sort" :
