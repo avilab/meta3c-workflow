@@ -33,12 +33,17 @@
     },
     "view" :
     {
-        "time" : 60,
+        "time" : 60
     },
     "sort" :
     {
         "cpus-per-task" : "{threads}",
         "time" : 60,
         "mem" : 4000
+    },
+    "network" :
+    {
+        "time" : 600,
+        "mem" : 8000
     }
 }
