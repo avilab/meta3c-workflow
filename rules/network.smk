@@ -60,7 +60,6 @@ rule network:
       "../envs/network.yaml"
     shell:
       """
-      echo $PROJECT_DIR
       echo $CONDA_ENV_PATH
       python scripts/network.py \
           --input {input.alignment} \
