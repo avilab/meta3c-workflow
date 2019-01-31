@@ -60,6 +60,8 @@ rule network:
       "../envs/network.yaml"
     shell:
       """
+      pwd
+      ls -ltr
       python scripts/network.py \
           --input {input.alignment} \
           --reference {input.ref} \
