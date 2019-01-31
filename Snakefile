@@ -4,7 +4,7 @@ __copyright__ = "Copyright 2018, Avilab"
 __email__ = "taavi.pall@ut.ee"
 __license__ = "MIT"
 
-## Load libraries
+# Load libraries
 import os
 import json
 import glob
@@ -13,14 +13,14 @@ from snakemake.remote.FTP import RemoteProvider as FTPRemoteProvider
 from snakemake.utils import validate
 shell.executable("bash")
 
-## Load configuration file with sample and path info
+# Load configuration file with sample and path info
 configfile: "config.yaml"
 validate(config, "schemas/config.schema.yaml")
 SAMPLES = pd.read_table(config["samples"], sep = "\s+").set_index("sample", drop=False)
 validate(SAMPLES, "schemas/samples.schema.yaml")
 SAMPLE_IDS = SAMPLES.index.values.tolist()
 
-## Create slurm logs dir
+# Create slurm logs dir
 if not os.path.exists("logs/slurm"):
     os.makedirs("logs/slurm")
 
@@ -31,7 +31,7 @@ rule all:
                 "align/{sample}/coverage.tsv",
                 "align/{sample}_sorted.bam"], sample = SAMPLE_IDS)
 
-## Modules
+# Modules
 include: "rules/trim.smk"
 include: "rules/assemble.smk"
-##include: "rules/metator.smk"
+include: "rules/network.smk"
