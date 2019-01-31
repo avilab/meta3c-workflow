@@ -29,5 +29,15 @@
     {
         "time" : 360,
         "mem" : 8000
+    },
+    "samtools_view" :
+    {
+        "time" : 30,
+        "mem" : 4000
+    },
+    "samtools_sort" :
+    {
+        "time" : 30,
+        "mem" : 4000
     }
 }
