@@ -185,7 +185,7 @@ def alignment_to_contacts(
             try:
                 assert read_name_forward == read_name_reverse
             except AssertionError:
-                    "Reads don't have the same name: {} and {}".format(read_name_forward, read_name_reverse)
+                "Reads don't have the same name: {} and {}".format(read_name_forward, read_name_reverse)
                 raise
 
             # To check if a flag contains 4
@@ -730,7 +730,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                                         "%s. Maybe there are too many opened"
                                         "files at once: %s",
                                         filename,
-                                        len(opened_files),
+                                        len(opened_files)
                                     )
                                     raise
 
@@ -755,7 +755,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                                     "%s. Maybe there are too many opened"
                                     "files at once: %s",
                                     filename,
-                                    len(opened_files),
+                                    len(opened_files)
                                 )
                                 raise
                             seq, qual = my_read_set.keys()[0]
