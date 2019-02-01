@@ -42,6 +42,8 @@ rule sort:
     wrapper:
         "0.31.1/bio/samtools/sort"
 
+PATH_TO_WORKFLOW = os.path.dirname(workflow.snakemake)
+
 # Generating network from alignments
 rule network:
     input:
@@ -56,11 +58,11 @@ rule network:
       chunk_size = 1000,
       read_size = 65,
       size_chunk_threshold = 500,
-      path_to_script = lambda workflow: os.path.dirname(workflow.snakemake)
+      path_to_workflow = PATH_TO_WORKFLOW
     conda: 
       "../envs/network.yaml"
     shell:
-      "python {params.path_to_script}/scripts/network.py "
+      "python {params.path_to_workflow}/scripts/network.py "
       "--input {input.alignment} "
       "--reference {input.ref} "
       "--output {params.network_dir} "
