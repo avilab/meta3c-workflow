@@ -19,6 +19,7 @@ validate(config, "schemas/config.schema.yaml")
 SAMPLES = pd.read_table(config["samples"], sep = "\s+").set_index("sample", drop=False)
 validate(SAMPLES, "schemas/samples.schema.yaml")
 SAMPLE_IDS = SAMPLES.index.values.tolist()
+SNAKEMAKE_DIR = os.path.dirname(workflow.snakefile)
 
 # Create slurm logs dir
 if not os.path.exists("logs/slurm"):
