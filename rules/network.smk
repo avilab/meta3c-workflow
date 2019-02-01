@@ -42,8 +42,6 @@ rule sort:
     wrapper:
         "0.31.1/bio/samtools/sort"
 
-SNAKEMAKE_DIR = os.path.dirname(workflow.snakefile)
-
 # Generating network from alignments
 rule network:
     input:
