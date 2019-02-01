@@ -55,11 +55,12 @@ rule network:
       q = 10,
       chunk_size = 1000,
       read_size = 65,
-      size_chunk_threshold = 500
+      size_chunk_threshold = 500,
+      path_to_script = lambda workflow: os.path.dirname(workflow.snakemake)
     conda: 
       "../envs/network.yaml"
     shell:
-      "python scripts/network.py "
+      "python {params.path_to_script}/scripts/network.py "
       "--input {input.alignment} "
       "--reference {input.ref} "
       "--output {params.network_dir} "
