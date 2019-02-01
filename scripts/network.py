@@ -912,7 +912,7 @@ def main():
 
     else:
 
-        my_assembly, _ = reference_file
+        my_assembly = reference_file
 
         alignment_to_contacts(
             sam_merged=merged_file,
