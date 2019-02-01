@@ -59,14 +59,4 @@ rule network:
     conda: 
       "../envs/network.yaml"
     run:
-      os.system("
-      python scripts/network.py \
-          --input {input.alignment} \
-          --reference {input.ref} \
-          --output {params.network_dir} \
-          --map-quality {params.q} \
-          --chunk-size {params.chunk_size} \
-          --read-size {params.read_size} \
-          --size-chunk-threshold {params.size_chunk_threshold} \
-          --normalize
-          ")
+      os.system("python scripts/network.py --input {input.alignment} --reference {input.ref} --output {params.network_dir} --map-quality {params.q} --chunk-size {params.chunk_size} --read-size {params.read_size} --size-chunk-threshold {params.size_chunk_threshold} --normalize")
