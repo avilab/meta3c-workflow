@@ -61,7 +61,7 @@ rule network:
     conda: 
       "../envs/network.yaml"
     shell:
-      "python " SNAKEMAKE_DIR + "/scripts/network.py "
+      "python {SNAKEMAKE_DIR}/scripts/network.py "
       "--input {input.alignment} "
       "--reference {input.ref} "
       "--output {params.network_dir} "
