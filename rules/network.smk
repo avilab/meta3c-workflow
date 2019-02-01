@@ -56,7 +56,6 @@ rule network:
       chunk_size = 1000,
       read_size = 65,
       size_chunk_threshold = 500
-    conda: 
-      "../envs/network.yaml"
-    script:
-      "../scripts/network.py --input {input.alignment} --reference {input.ref} --output {params.network_dir} --map-quality {params.q} --chunk-size {params.chunk_size} --read-size {params.read_size} --size-chunk-threshold {params.size_chunk_threshold} --normalize"
+    run:
+      import network from scripts
+      network()
