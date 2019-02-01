@@ -17,7 +17,7 @@ import operator
 from Bio import SeqIO
 from Bio.SeqIO.QualityIO import FastqGeneralIterator
 from Bio.Seq import Seq
-from scripts import logger
+import logger
 
 DEFAULT_SIZE_CHUNK_THRESHOLD = 500
 DEFAULT_MAPQ_THRESHOLD = 10
