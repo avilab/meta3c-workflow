@@ -58,8 +58,8 @@ rule network:
       size_chunk_threshold = 500
     conda: 
       "../envs/network.yaml"
-    shell:
-      """
+    run:
+      os.system("
       python scripts/network.py \
           --input {input.alignment} \
           --reference {input.ref} \
@@ -69,4 +69,4 @@ rule network:
           --read-size {params.read_size} \
           --size-chunk-threshold {params.size_chunk_threshold} \
           --normalize
-          """
+          ")
