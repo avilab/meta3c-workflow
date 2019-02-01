@@ -17,7 +17,6 @@ import operator
 from Bio import SeqIO
 from Bio.SeqIO.QualityIO import FastqGeneralIterator
 from Bio.Seq import Seq
-import logger
 
 DEFAULT_SIZE_CHUNK_THRESHOLD = 500
 DEFAULT_MAPQ_THRESHOLD = 10
@@ -107,7 +106,7 @@ def alignment_to_contacts(
     self_contacts = parameters["self_contacts"]
     normalized = parameters["normalized"]
 
-    logger.info("Establishing chunk list...")
+    print("Establishing chunk list...")
     chunk_complete_data = dict()
 
     #   Get all information about all chunks from all contigs
@@ -135,7 +134,7 @@ def alignment_to_contacts(
             }
             global_id += 1
 
-    logger.info("Opening alignment files...")
+    print("Opening alignment files...")
 
     current_read = None
 
@@ -148,7 +147,7 @@ def alignment_to_contacts(
             name: length for name, length in zip(names, lengths)
         }
 
-        logger.info("Reading contacts...")
+        print("Reading contacts...")
 
         # Since the BAM file is supposed to be sorted and interleaved,
         # pairs should be always grouped with one below the other (the exact
@@ -186,11 +185,7 @@ def alignment_to_contacts(
             try:
                 assert read_name_forward == read_name_reverse
             except AssertionError:
-                logger.error(
-                    "Reads don't have the same name: " "%s and %s",
-                    read_name_forward,
-                    read_name_reverse,
-                )
+                    "Reads don't have the same name: {} and {}".format(read_name_forward, read_name_reverse)
                 raise
 
             # To check if a flag contains 4
@@ -282,7 +277,7 @@ def alignment_to_contacts(
                     )
                     all_chunks[chunk_key_reverse] += 1
 
-    logger.info("Writing chunk data...")
+    print("Writing chunk data...")
 
     # Now we can update the chunk dictionary
     # with the info we gathered from the BAM file
@@ -302,7 +297,7 @@ def alignment_to_contacts(
                 chunk_complete_data[name]["hit"] = hit
                 chunk_complete_data[name]["coverage"] = coverage
             except KeyError:
-                logger.error(
+                print(
                     "A mismatch was detected between the reference "
                     "genome and the genome used for the alignment "
                     "file, some sequence names were not found"
@@ -317,7 +312,7 @@ def alignment_to_contacts(
 
     # Lastly, generate the network proper
 
-    logger.info("Writing network...")
+    print("Writing network...")
 
     output_network_path = os.path.join(output_dir, output_file_network)
 
@@ -342,7 +337,7 @@ def alignment_to_contacts(
                 line = "{}\t{}\t{}\n".format(idx1, idx2, effective_count)
                 network_file_handle.write(line)
             except KeyError as e:
-                logger.warning("Mismatch detected: %s", e)
+                print("Mismatch detected: {}".format(e))
 
     return chunk_complete_data, all_contacts
 
@@ -701,12 +696,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                     my_seq_tuple = (my_seq_string, my_qual_string)
 
                     if len(my_read_set) > 2:
-                        logger.warning(
-                            "Something's gone wrong with read set %s, as "
-                            "there are %s of them",
-                            my_read_name,
-                            len(my_read_set),
-                        )
+                        print("Something's gone wrong with read set {}, as there are {} of them".format(my_read_name, len(my_read_set)))
                     elif len(my_read_set) == 0:
                         my_read_set[my_seq_tuple] = "forward"
                     elif my_seq_tuple not in my_read_set.keys():
@@ -735,7 +725,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                                     file_to_write = open(filename, "w")
                                     opened_files[filename] = file_to_write
                                 except IOError:
-                                    logger.error(
+                                    print(
                                         "Error when trying to handle"
                                         "%s. Maybe there are too many opened"
                                         "files at once: %s",
@@ -760,7 +750,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                                 file_to_write = open(filename, "w")
                                 opened_files[filename] = file_to_write
                             except IOError:
-                                logger.error(
+                                print(
                                     "Error when trying to handle"
                                     "%s. Maybe there are too many opened"
                                     "files at once: %s",
@@ -774,7 +764,7 @@ def retrieve_reads_contig_wise(sam_merged, contig_data, output_dir):
                             )
                             file_to_write.write(line)
                     else:
-                        logger.warning(
+                        print(
                             "Something's gone wrong with read set %s, as "
                             "there are %s of them",
                             my_read_name,
