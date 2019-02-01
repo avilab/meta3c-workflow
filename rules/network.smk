@@ -60,6 +60,7 @@ rule network:
       "../envs/network.yaml"
     shell:
       """
+      chmod +x scripts/network.py
       python scripts/network.py \
           --input {input.alignment} \
           --reference {input.ref} \
