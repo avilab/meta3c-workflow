@@ -42,10 +42,19 @@ rule sort:
     wrapper:
         "0.31.1/bio/samtools/sort"
 
+rule index:
+    input: rules.sort.output
+    output: "align/{sample}_sorted.bam.bai"
+    params:
+        "" # optional params string
+    wrapper:
+        "0.31.1/bio/samtools/index"
+
 # Generating network from alignments
 rule network:
     input:
         alignment = rules.sort.output,
+        index = rules.index.output,
         ref = rules.assemble.output.contigs
     output: 
         "network/{sample}/network.txt",
