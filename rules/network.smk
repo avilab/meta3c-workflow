@@ -27,7 +27,7 @@ rule view:
     output:
         "align/{sample}_raw.bam"
     params:
-        "-b -F 4 -q 10"
+        "-b -F 4 -q 10" # optional params string
     wrapper:
         "0.31.1/bio/samtools/view"
 
@@ -37,7 +37,7 @@ rule sort:
     output:
         "align/{sample}_sorted.bam"
     params:
-        "-n"
+        "" # optional params string
     threads: 8
     wrapper:
         "0.31.1/bio/samtools/sort"
