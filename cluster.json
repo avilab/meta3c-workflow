@@ -31,15 +31,19 @@
         "time" : 10,
         "mem" : 6000
     },
-    "samtools_view" :
+    "view" :
     {
-        "time" : 600,
-        "mem" : 4000
+        "time" : 60
     },
-    "samtools_sort" :
+    "sort" :
     {
         "cpus-per-task" : "{threads}",
-        "time" : 120,
+        "time" : 60,
         "mem" : 4000
+    },
+    "network" :
+    {
+        "time" : 600,
+        "mem" : 8000
     }
 }

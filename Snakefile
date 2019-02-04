@@ -19,6 +19,7 @@ validate(config, "schemas/config.schema.yaml")
 SAMPLES = pd.read_table(config["samples"], sep = "\s+").set_index("sample", drop=False)
 validate(SAMPLES, "schemas/samples.schema.yaml")
 SAMPLE_IDS = SAMPLES.index.values.tolist()
+SNAKEMAKE_DIR = os.path.dirname(workflow.snakefile)
 
 # Create slurm logs dir
 if not os.path.exists("logs/slurm"):
@@ -29,7 +30,8 @@ rule all:
         expand(["assemble/{sample}/final.contigs.fa", 
                 "align/{sample}/aln.sam.gz", 
                 "align/{sample}/coverage.tsv",
-                "align/{sample}_sorted.bam"], sample = SAMPLE_IDS)
+                "align/{sample}_sorted.bam",
+                "network/{sample}/network.txt"], sample = SAMPLE_IDS)
 
 # Modules
 include: "rules/trim.smk"
